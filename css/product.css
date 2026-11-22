@@ -1,0 +1,109 @@
+/* ============================================================
+   My Daraz — Product Detail
+   ============================================================ */
+.product-detail { background: var(--bg-surface); border-radius: var(--radius-md); padding: var(--sp-4); margin-top: var(--sp-3); }
+@media (min-width: 992px) {
+    .product-detail { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-6); padding: var(--sp-6); }
+}
+
+/* Gallery */
+.product-gallery { margin-bottom: var(--sp-4); }
+.product-gallery .main-img {
+    aspect-ratio: 1;
+    background: var(--bg-surface-alt);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: var(--sp-3);
+}
+.product-gallery .main-img img { width: 100%; height: 100%; object-fit: contain; }
+.product-gallery .thumb-row { display: flex; gap: var(--sp-2); overflow-x: auto; }
+.product-gallery .thumb {
+    width: 64px; height: 64px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid transparent;
+    flex-shrink: 0;
+}
+.product-gallery .thumb img { width: 100%; height: 100%; object-fit: cover; }
+.product-gallery .thumb.active { border-color: var(--daraz-orange); }
+.product-gallery .thumb:hover { border-color: var(--daraz-orange-light); }
+
+/* Product info */
+.product-info-block h1 { font-size: var(--font-size-xl); font-weight: 700; color: var(--text-primary); margin-bottom: var(--sp-2); line-height: 1.3; }
+.product-meta { display: flex; flex-wrap: wrap; gap: var(--sp-3); margin-bottom: var(--sp-3); font-size: var(--font-size-sm); color: var(--text-muted); }
+.product-meta .meta-item { display: flex; align-items: center; gap: 4px; }
+.product-meta .meta-item .rating-num { color: var(--daraz-orange); font-weight: 700; }
+.product-meta .meta-item .divider-line { width: 1px; height: 14px; background: var(--border-color); }
+
+.price-block {
+    background: linear-gradient(90deg, #fff5ed, transparent);
+    padding: var(--sp-4);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--sp-4);
+}
+[data-theme="dark"] .price-block { background: linear-gradient(90deg, rgba(248,86,6,0.1), transparent); }
+.price-block .price-now { font-size: var(--font-size-2xl); font-weight: 800; color: var(--daraz-orange); }
+.price-block .old-price { font-size: var(--font-size-md); margin-left: var(--sp-2); }
+.price-block .discount-tag { background: var(--daraz-orange); color: #fff; padding: 4px var(--sp-2); border-radius: var(--radius-xs); font-size: var(--font-size-sm); font-weight: 700; margin-left: var(--sp-2); }
+.price-block .price-note { color: var(--text-muted); font-size: var(--font-size-xs); margin-top: var(--sp-1); }
+
+/* Variant options */
+.variant-block { margin-bottom: var(--sp-4); }
+.variant-block .label { font-weight: 700; margin-bottom: var(--sp-2); }
+.variant-options { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.variant-options .variant-opt {
+    padding: 6px var(--sp-3);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    background: var(--bg-surface);
+}
+.variant-options .variant-opt:hover { border-color: var(--daraz-orange); }
+.variant-options .variant-opt.active { border-color: var(--daraz-orange); color: var(--daraz-orange); background: rgba(248, 86, 6, 0.06); }
+
+/* Quantity + actions */
+.action-row { display: flex; gap: var(--sp-2); align-items: center; margin: var(--sp-4) 0; flex-wrap: wrap; }
+.action-row .qty-control { margin-right: var(--sp-2); }
+.buy-now-btn { flex: 1; min-width: 140px; }
+
+/* Delivery info */
+.delivery-info {
+    background: var(--bg-surface-alt);
+    border-radius: var(--radius-md);
+    padding: var(--sp-4);
+    margin-top: var(--sp-4);
+}
+.delivery-info .delivery-row { display: flex; align-items: flex-start; gap: var(--sp-3); padding: var(--sp-2) 0; border-bottom: 1px dashed var(--border-color); }
+.delivery-info .delivery-row:last-child { border-bottom: none; }
+.delivery-info .delivery-row .icon { font-size: 20px; flex-shrink: 0; }
+.delivery-info .delivery-row .content h5 { font-size: var(--font-size-sm); font-weight: 700; margin-bottom: 2px; }
+.delivery-info .delivery-row .content p { font-size: var(--font-size-xs); color: var(--text-muted); }
+
+/* Tabs on product page */
+.product-tabs { background: var(--bg-surface); margin-top: var(--sp-3); border-radius: var(--radius-md); padding: var(--sp-4); }
+.spec-table { width: 100%; font-size: var(--font-size-sm); }
+.spec-table tr { border-bottom: 1px solid var(--divider); }
+.spec-table td { padding: var(--sp-2) var(--sp-3); }
+.spec-table td:first-child { font-weight: 600; color: var(--text-secondary); width: 40%; }
+
+/* Reviews */
+.review-card { padding: var(--sp-3); border-bottom: 1px solid var(--divider); }
+.review-card:last-child { border-bottom: none; }
+.review-card .review-header { display: flex; align-items: center; gap: var(--sp-2); margin-bottom: var(--sp-2); }
+.review-card .review-header img { width: 32px; height: 32px; border-radius: 50%; }
+.review-card .review-header .name { font-weight: 600; font-size: var(--font-size-sm); }
+.review-card .review-header .date { font-size: var(--font-size-xs); color: var(--text-muted); margin-left: auto; }
+.review-card .review-body { font-size: var(--font-size-sm); color: var(--text-secondary); }
+.review-summary { display: flex; gap: var(--sp-4); padding: var(--sp-4); background: var(--bg-surface-alt); border-radius: var(--radius-md); margin-bottom: var(--sp-3); flex-wrap: wrap; }
+.review-summary .rating-overview { text-align: center; }
+.review-summary .rating-overview .big-num { font-size: var(--font-size-3xl); font-weight: 800; color: var(--daraz-orange); }
+.review-summary .rating-bars { flex: 1; min-width: 240px; }
+.review-summary .rating-bar-row { display: flex; align-items: center; gap: var(--sp-2); margin-bottom: 4px; font-size: var(--font-size-xs); }
+.review-summary .rating-bar-row .label { width: 30px; }
+.review-summary .rating-bar-row .bar { flex: 1; height: 6px; background: var(--bg-surface-hover); border-radius: var(--radius-full); overflow: hidden; }
+.review-summary .rating-bar-row .bar-fill { height: 100%; background: var(--warning-amber); }
+
+/* Related products */
+.related-section { margin-top: var(--sp-4); }

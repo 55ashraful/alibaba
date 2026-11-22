@@ -1,0 +1,123 @@
+/* ============================================================
+   My Daraz — Live Chat Widget
+   ============================================================ */
+.chat-widget {
+    position: fixed;
+    bottom: var(--sp-4);
+    right: var(--sp-4);
+    z-index: 100;
+}
+.chat-fab {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--daraz-orange);
+    color: #fff;
+    font-size: 24px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    transition: transform var(--transition-fast);
+}
+.chat-fab:hover { transform: scale(1.08); }
+.chat-fab .chat-badge {
+    position: absolute;
+    top: -2px; right: -2px;
+    background: var(--danger-red);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    border-radius: var(--radius-full);
+    min-width: 18px;
+    height: 18px;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid var(--bg-body);
+}
+
+.chat-window {
+    position: absolute;
+    bottom: 70px; right: 0;
+    width: 320px;
+    max-width: calc(100vw - 32px);
+    height: 440px;
+    max-height: calc(100vh - 120px);
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+}
+.chat-window.open { display: flex; animation: chatIn var(--transition-base); }
+@keyframes chatIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.chat-header {
+    background: var(--daraz-orange);
+    color: #fff;
+    padding: var(--sp-3) var(--sp-4);
+    display: flex; align-items: center; gap: var(--sp-2);
+}
+.chat-header .agent-info { flex: 1; }
+.chat-header .agent-info .name { font-weight: 700; font-size: var(--font-size-sm); }
+.chat-header .agent-info .status { font-size: var(--font-size-xs); opacity: 0.85; }
+.chat-header .chat-close { color: #fff; font-size: 20px; cursor: pointer; }
+
+.chat-body {
+    flex: 1;
+    padding: var(--sp-3);
+    overflow-y: auto;
+    background: var(--bg-surface-alt);
+}
+.chat-msg {
+    margin-bottom: var(--sp-2);
+    max-width: 80%;
+}
+.chat-msg .bubble {
+    padding: var(--sp-2) var(--sp-3);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+}
+.chat-msg.bot .bubble { background: var(--bg-surface); border: 1px solid var(--border-color); border-bottom-left-radius: 4px; }
+.chat-msg.user { margin-left: auto; }
+.chat-msg.user .bubble { background: var(--daraz-orange); color: #fff; border-bottom-right-radius: 4px; }
+.chat-msg .time { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+
+.chat-quick-replies { display: flex; flex-wrap: wrap; gap: var(--sp-1); padding: var(--sp-2) var(--sp-3); border-top: 1px solid var(--divider); }
+.chat-quick-reply {
+    background: var(--bg-surface-hover);
+    color: var(--text-secondary);
+    padding: 4px var(--sp-2);
+    border-radius: var(--radius-full);
+    font-size: var(--font-size-xs);
+    cursor: pointer;
+    border: 1px solid var(--border-color);
+}
+.chat-quick-reply:hover { background: var(--daraz-orange); color: #fff; border-color: var(--daraz-orange); }
+
+.chat-input-row {
+    padding: var(--sp-2) var(--sp-3);
+    display: flex; gap: var(--sp-2);
+    border-top: 1px solid var(--divider);
+    background: var(--bg-surface);
+}
+.chat-input-row input {
+    flex: 1;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-full);
+    padding: 8px var(--sp-3);
+    background: var(--bg-surface-alt);
+    color: var(--text-primary);
+}
+.chat-input-row input:focus { outline: none; border-color: var(--daraz-orange); }
+.chat-input-row button {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--daraz-orange);
+    color: #fff;
+    font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+@media (max-width: 480px) {
+    .chat-window { width: calc(100vw - 32px); }
+}

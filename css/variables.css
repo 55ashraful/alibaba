@@ -1,0 +1,107 @@
+/* ============================================================
+   My Daraz — Theme Tokens (Light + Dark)
+   ============================================================ */
+:root {
+    /* Brand */
+    --daraz-orange: #f85606;
+    --daraz-orange-dark: #e44d06;
+    --daraz-orange-light: #ff7a3d;
+    --danger-red: #d9534f;
+    --success-green: #2e7d32;
+    --info-blue: #1976d2;
+    --warning-amber: #f9a825;
+    --purple: #7d2ae8;
+
+    /* Surfaces */
+    --bg-body: #f0f2f5;
+    --bg-surface: #ffffff;
+    --bg-surface-alt: #f8f8f8;
+    --bg-surface-hover: #f1f1f1;
+    --bg-overlay: rgba(0, 0, 0, 0.55);
+
+    /* Text */
+    --text-primary: #1a1a1a;
+    --text-secondary: #333333;
+    --text-muted: #757575;
+    --text-disabled: #bdbdbd;
+    --text-on-brand: #ffffff;
+
+    /* Lines */
+    --border-color: #e5e5e5;
+    --border-strong: #d0d0d0;
+    --divider: #f0f0f0;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 8px 30px rgba(0, 0, 0, 0.16);
+
+    /* Radii */
+    --radius-xs: 4px;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-full: 999px;
+
+    /* Spacing */
+    --sp-1: 4px;
+    --sp-2: 8px;
+    --sp-3: 12px;
+    --sp-4: 16px;
+    --sp-5: 20px;
+    --sp-6: 24px;
+    --sp-8: 32px;
+
+    /* Layout */
+    --header-h: 56px;
+    --footer-h: auto;
+    --container-max: 1200px;
+    --side-menu-w: 280px;
+
+    /* Typography */
+    --font-base: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hind Siliguri", "Noto Sans Bengali", Roboto, sans-serif;
+    --font-size-xs: 11px;
+    --font-size-sm: 13px;
+    --font-size-base: 14px;
+    --font-size-md: 15px;
+    --font-size-lg: 17px;
+    --font-size-xl: 20px;
+    --font-size-2xl: 24px;
+    --font-size-3xl: 32px;
+
+    /* Motion */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.25s ease;
+    --transition-slow: 0.4s ease;
+
+    /* Z-index */
+    --z-sticky: 100;
+    --z-modal: 1001;
+    --z-toast: 2000;
+    --z-splash: 9999;
+}
+
+/* Dark mode overrides */
+[data-theme="dark"] {
+    --bg-body: #0e1116;
+    --bg-surface: #1a1d24;
+    --bg-surface-alt: #21252e;
+    --bg-surface-hover: #2a2f3a;
+    --bg-overlay: rgba(0, 0, 0, 0.75);
+
+    --text-primary: #f5f5f5;
+    --text-secondary: #d4d4d4;
+    --text-muted: #9aa0aa;
+    --text-disabled: #5a5f69;
+
+    --border-color: #2c313c;
+    --border-strong: #3a4150;
+    --divider: #252a33;
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.55);
+    --shadow-xl: 0 8px 30px rgba(0, 0, 0, 0.65);
+}

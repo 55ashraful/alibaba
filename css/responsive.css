@@ -1,0 +1,45 @@
+/* ============================================================
+   My Daraz — Responsive overrides
+   ============================================================ */
+
+/* Mobile-first defaults are in each file. These are additional tweaks. */
+
+/* Larger screens: hide mobile-specific elements */
+@media (min-width: 992px) {
+    .desktop-only { display: block !important; }
+    .mobile-only { display: none !important; }
+}
+@media (max-width: 991px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { display: block !important; }
+}
+
+/* Header collapse on small screens */
+@media (max-width: 767px) {
+    .header-action .label { display: none; }
+    .app-header { gap: var(--sp-1); padding: var(--sp-2) var(--sp-2); }
+}
+
+/* Forms on small screens */
+@media (max-width: 576px) {
+    .auth-card { padding: var(--sp-4); }
+    .modal-content { padding: var(--sp-4); width: 96%; }
+    .product-detail { padding: var(--sp-3); }
+    .checkout-block { padding: var(--sp-3); }
+    .stat-grid { grid-template-columns: 1fr; }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print friendly */
+@media print {
+    .app-header, .app-footer, .side-menu, .fab, .chat-widget, .mobile-search-row { display: none !important; }
+    body { background: #fff; }
+}

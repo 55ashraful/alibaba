@@ -1,0 +1,232 @@
+/* ============================================================
+   My Daraz — Cart + Checkout
+   ============================================================ */
+
+/* Cart */
+.cart-page { padding: var(--sp-3); }
+@media (min-width: 992px) {
+    .cart-page { display: grid; grid-template-columns: 1fr 340px; gap: var(--sp-4); align-items: start; }
+}
+
+.cart-items { background: var(--bg-surface); border-radius: var(--radius-md); padding: var(--sp-3); }
+.cart-item {
+    display: flex;
+    gap: var(--sp-3);
+    padding: var(--sp-3) 0;
+    border-bottom: 1px solid var(--divider);
+}
+.cart-item:last-child { border-bottom: none; }
+.cart-item .ci-img { width: 80px; height: 80px; border-radius: var(--radius-sm); overflow: hidden; flex-shrink: 0; background: var(--bg-surface-alt); }
+.cart-item .ci-img img { width: 100%; height: 100%; object-fit: cover; }
+.cart-item .ci-info { flex: 1; }
+.cart-item .ci-info h4 { font-size: var(--font-size-base); font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
+.cart-item .ci-info .ci-variant { font-size: var(--font-size-xs); color: var(--text-muted); margin-bottom: var(--sp-1); }
+.cart-item .ci-price-row { display: flex; align-items: center; justify-content: space-between; margin-top: var(--sp-2); gap: var(--sp-2); flex-wrap: wrap; }
+.cart-item .ci-price { color: var(--daraz-orange); font-weight: 700; }
+.cart-item .ci-actions { display: flex; align-items: center; gap: var(--sp-3); }
+.cart-item .ci-actions .icon-btn { color: var(--text-muted); cursor: pointer; font-size: 16px; padding: 4px; }
+.cart-item .ci-actions .icon-btn:hover { color: var(--danger-red); }
+
+/* Cart summary */
+.cart-summary {
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    padding: var(--sp-4);
+    position: sticky;
+    top: calc(var(--header-h) + var(--sp-3));
+}
+.cart-summary h3 { font-size: var(--font-size-md); font-weight: 700; margin-bottom: var(--sp-3); }
+.cart-summary .summary-row { display: flex; justify-content: space-between; padding: var(--sp-1) 0; font-size: var(--font-size-sm); }
+.cart-summary .summary-row.total { padding-top: var(--sp-3); margin-top: var(--sp-2); border-top: 1px dashed var(--border-color); font-size: var(--font-size-md); font-weight: 700; }
+.cart-summary .summary-row.total .amount { color: var(--daraz-orange); }
+.cart-summary .coupon-input-row { display: flex; gap: var(--sp-2); margin: var(--sp-3) 0; }
+.cart-summary .coupon-input-row .input { flex: 1; }
+.cart-summary .checkout-btn { margin-top: var(--sp-3); }
+
+/* Checkout */
+.checkout-page { padding: var(--sp-3); }
+@media (min-width: 992px) {
+    .checkout-page { display: grid; grid-template-columns: 1fr 340px; gap: var(--sp-4); align-items: start; }
+}
+
+.checkout-block {
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+    padding: var(--sp-4);
+    margin-bottom: var(--sp-3);
+}
+.checkout-block h3 {
+    font-size: var(--font-size-md);
+    font-weight: 700;
+    margin-bottom: var(--sp-3);
+    display: flex; align-items: center; gap: var(--sp-2);
+}
+.checkout-block h3 .step-num {
+    background: var(--daraz-orange);
+    color: #fff;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: var(--font-size-xs);
+}
+
+.address-list { display: grid; gap: var(--sp-2); }
+.address-card {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: var(--sp-3);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+.address-card:hover { border-color: var(--daraz-orange); }
+.address-card.selected { border-color: var(--daraz-orange); background: rgba(248, 86, 6, 0.04); }
+.address-card .ac-name { font-weight: 700; font-size: var(--font-size-sm); }
+.address-card .ac-phone { font-size: var(--font-size-xs); color: var(--text-muted); margin-bottom: var(--sp-1); }
+.address-card .ac-text { font-size: var(--font-size-sm); }
+.address-card .ac-actions { margin-top: var(--sp-2); display: flex; gap: var(--sp-3); font-size: var(--font-size-xs); }
+.address-card .ac-actions .link { color: var(--daraz-orange); cursor: pointer; }
+
+.payment-method-list { display: grid; gap: var(--sp-2); }
+.payment-method {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: var(--sp-3);
+    cursor: pointer;
+    display: flex; align-items: center; gap: var(--sp-3);
+}
+.payment-method:hover { border-color: var(--daraz-orange); }
+.payment-method.selected { border-color: var(--daraz-orange); background: rgba(248, 86, 6, 0.04); }
+.payment-method .icon { font-size: 24px; }
+.payment-method .name { flex: 1; font-weight: 600; font-size: var(--font-size-sm); }
+.payment-method .desc { font-size: var(--font-size-xs); color: var(--text-muted); }
+.payment-method .radio { width: 18px; height: 18px; border: 2px solid var(--border-strong); border-radius: 50%; flex-shrink: 0; }
+.payment-method.selected .radio { border-color: var(--daraz-orange); background: var(--daraz-orange) radial-gradient(circle, #fff 35%, var(--daraz-orange) 40%); }
+
+/* Order confirmation */
+.order-confirm {
+    text-align: center;
+    padding: var(--sp-6) var(--sp-4);
+}
+.order-confirm .check-icon {
+    width: 72px; height: 72px;
+    background: var(--success-green);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 36px;
+    margin: 0 auto var(--sp-4);
+    animation: checkPop 0.6s ease;
+}
+@keyframes checkPop { 0% { transform: scale(0); } 60% { transform: scale(1.1); } 100% { transform: scale(1); } }
+.order-confirm h2 { font-size: var(--font-size-xl); margin-bottom: var(--sp-2); }
+.order-confirm p { color: var(--text-muted); margin-bottom: var(--sp-4); }
+.order-confirm .order-id-box {
+    background: var(--bg-surface-alt);
+    padding: var(--sp-3);
+    border-radius: var(--radius-md);
+    margin: var(--sp-4) auto;
+    max-width: 360px;
+}
+.order-confirm .order-id-box .label { color: var(--text-muted); font-size: var(--font-size-xs); }
+.order-confirm .order-id-box .id { font-weight: 700; font-size: var(--font-size-md); color: var(--daraz-orange); }
+.order-confirm .order-prepaid-info {
+    background: var(--bg-surface-alt);
+    padding: var(--sp-3);
+    border-radius: var(--radius-md);
+    margin: var(--sp-3) auto;
+    max-width: 420px;
+    text-align: left;
+    font-size: var(--font-size-sm);
+    line-height: 1.8;
+}
+
+/* Prepaid delivery panel */
+.prepaid-panel {
+    margin-top: var(--sp-3);
+    padding: var(--sp-3);
+    background: var(--bg-surface-alt);
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--border-strong);
+}
+.prepaid-method-tabs { display: flex; gap: var(--sp-2); margin-bottom: var(--sp-3); flex-wrap: wrap; }
+.prepaid-tab {
+    flex: 1;
+    min-width: 80px;
+    padding: 8px var(--sp-2);
+    background: var(--bg-surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+.prepaid-tab:hover { background: var(--bg-surface-hover); }
+.prepaid-account-box {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: var(--sp-3);
+    margin-bottom: var(--sp-3);
+}
+.prepaid-account-box .pa-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: var(--sp-2); flex-wrap: wrap; gap: var(--sp-2);
+}
+.prepaid-account-box .pa-label { font-weight: 700; color: var(--text-primary); }
+.prepaid-account-box .pa-type { font-size: var(--font-size-xs); color: var(--text-muted); }
+.prepaid-account-box .pa-number-row { display: flex; align-items: center; gap: var(--sp-2); flex-wrap: wrap; }
+.prepaid-account-box .pa-number {
+    font-size: var(--font-size-xl);
+    font-weight: 800;
+    color: var(--daraz-orange);
+    letter-spacing: 1px;
+    font-family: monospace;
+}
+.prepaid-instruction {
+    background: rgba(248, 86, 6, 0.06);
+    padding: var(--sp-3);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    line-height: 1.7;
+    margin-bottom: var(--sp-3);
+}
+.prepaid-notice {
+    margin-top: var(--sp-3);
+    padding: var(--sp-3);
+    background: rgba(249, 168, 37, 0.12);
+    border: 1px solid var(--warning-amber);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* Coins block on checkout */
+.coins-block { border-color: var(--daraz-orange); }
+.coins-summary { display: flex; justify-content: space-between; font-size: var(--font-size-sm); margin-bottom: var(--sp-2); flex-wrap: wrap; gap: var(--sp-2); }
+.coins-summary strong { color: var(--daraz-orange); }
+.coin-use-row { display: flex; align-items: center; gap: var(--sp-2); margin-top: var(--sp-2); flex-wrap: wrap; }
+
+/* Prepaid status box on order detail */
+.prepaid-status-box {
+    margin-top: var(--sp-3);
+    padding: var(--sp-3);
+    background: var(--bg-surface-alt);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-sm);
+    line-height: 1.8;
+}
+.prepaid-status-box code {
+    background: var(--bg-surface-hover);
+    padding: 2px var(--sp-2);
+    border-radius: var(--radius-xs);
+    font-weight: 700;
+}
+.prepaid-waiting-box {
+    padding: var(--sp-3);
+    background: rgba(249, 168, 37, 0.1);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--sp-3);
+}
