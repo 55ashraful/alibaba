@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — My Daraz</title>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/account.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div id="splash-screen">
+        <div class="splash-logo"><span>My Daraz</span></div>
+    </div>
+
+    <div class="auth-page">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <span>My Daraz</span>
+            </div>
+            <h2 data-i18n="auth.welcome">স্বাগতম!</h2>
+            <form onsubmit="event.preventDefault(); handleLogin()">
+                <div class="input-group">
+                    <span class="icon">📧</span>
+                    <input type="email" id="loginEmail" class="input" placeholder="ইমেইল" data-i18n-placeholder="auth.email" required>
+                </div>
+                <div class="input-group">
+                    <span class="icon">🔒</span>
+                    <input type="password" id="loginPassword" class="input" placeholder="পাসওয়ার্ড" data-i18n-placeholder="auth.password" required>
+                </div>
+                <button type="submit" class="btn btn-block" data-i18n="auth.loginBtn">লগইন</button>
+            </form>
+            <div class="divider-text">OR</div>
+            <button class="btn btn-google btn-block" onclick="loginWithGoogle()">
+                <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" style="width:18px;height:18px;">
+                <span data-i18n="auth.googleLogin">Sign in with Google</span>
+            </button>
+            <div class="auth-foot">
+                <span data-i18n="auth.noAccount">অ্যাকাউন্ট নেই?</span>
+                <a href="register.html" data-i18n="auth.registerHere">রেজিস্টার করুন</a>
+            </div>
+            <div style="margin-top:var(--sp-4); padding:var(--sp-3); background:rgba(248,86,6,0.08); border-radius:var(--radius-sm); font-size:var(--font-size-xs); color:var(--text-muted); text-align:center;">
+                <strong style="color:var(--daraz-orange);">Demo Login:</strong><br>
+                User: user@daraz.local / user123<br>
+                Admin: admin@daraz.local / admin123
+            </div>
+            <div style="margin-top:var(--sp-3); text-align:center;">
+                <a href="index.html" style="color:var(--text-muted); font-size:var(--font-size-sm);">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+    <script src="js/config.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/live-chat.js"></script>
+    <script src="js/common.js"></script>
+
+    <script>
+        async function handleLogin() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            await loginWithEmail(email, password);
+        }
+        // Hide splash quickly on auth page
+        setTimeout(hideSplash, 600);
+        // Redirect if already logged in
+        setTimeout(async () => {
+            await new Promise(r => setTimeout(r, 300));
+            if (AppState.user) redirectAfterLogin();
+        }, 700);
+    </script>
+</body>
+</html>

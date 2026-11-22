@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Daraz — Online Shopping</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/account.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Splash -->
+    <div id="splash-screen">
+        <div class="splash-logo">
+            <span>My Daraz</span>
+        </div>
+        <div class="splash-tagline">Online Shopping Bangladesh</div>
+    </div>
+
+    <!-- App shell -->
+    <div class="app-shell">
+        <div id="app-header"></div>
+        <div id="side-menu-host"></div>
+
+        <main class="app-main">
+            <div class="container">
+                <!-- Banner slider -->
+                <div class="home-banner swiper" id="home-banner">
+                    <div class="swiper-wrapper" id="banner-wrapper"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <!-- Free gift banner -->
+                <div class="free-item-banner" onclick="location.href='pages/free-product.html'">
+                    <div class="banner-text">🎁 ফ্রি গিফট নিতে চাইলে এখানে ক্লিক করুন 👈🏻</div>
+                    <div class="banner-arrow">›</div>
+                </div>
+
+                <!-- Quick category icons -->
+                <div class="quick-icons" id="quick-icons"></div>
+
+                <!-- Flash Sale section -->
+                <div class="flash-sale-section" id="flash-sale-section">
+                    <div class="flash-sale-header">
+                        <h2>⚡ ফ্ল্যাশ সেল</h2>
+                        <div class="timer" id="flash-timer"></div>
+                    </div>
+                    <div class="scroll-row" id="flash-sale-products"></div>
+                </div>
+
+                <!-- Categories -->
+                <div class="section">
+                    <div class="section-header">
+                        <h2>জনপ্রিয় ক্যাটাগরি</h2>
+                        <a class="see-all" href="pages/categories.html">সব দেখুন ›</a>
+                    </div>
+                    <div class="categories-grid" id="categories-grid"></div>
+                </div>
+
+                <!-- Product sections by category -->
+                <div id="product-sections-container"></div>
+            </div>
+        </main>
+
+        <footer id="app-footer"></footer>
+    </div>
+
+    <!-- Chat widget -->
+    <div id="chat-widget-host"></div>
+
+    <!-- Offer popup host (admin-controlled, auto-dismiss after duration) -->
+    <div id="offer-popup-host"></div>
+
+    <!-- Firebase + Swiper -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- App JS (order matters: config → i18n → theme → auth → db → ui → store → cart → wishlist → common → page) -->
+    <script src="js/config.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/db.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/live-chat.js"></script>
+    <script src="js/common.js"></script>
+
+    <script>
+        bootstrapPage().then(() => initHomePage());
+    </script>
+</body>
+</html>
