@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ — My Daraz</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        .faq-item { background: var(--bg-surface); border-radius: var(--radius-sm); margin-bottom: var(--sp-2); overflow: hidden; }
+        .faq-q { padding: var(--sp-4); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: var(--text-primary); }
+        .faq-q::after { content: '+'; font-size: 22px; color: var(--daraz-orange); transition: transform var(--transition-fast); }
+        .faq-item.open .faq-q::after { transform: rotate(45deg); }
+        .faq-a { padding: 0 var(--sp-4); max-height: 0; overflow: hidden; transition: max-height var(--transition-base), padding var(--transition-base); color: var(--text-secondary); }
+        .faq-item.open .faq-a { padding: 0 var(--sp-4) var(--sp-4); max-height: 500px; }
+    </style>
+</head>
+<body>
+    <div id="splash-screen"><div class="splash-logo"><span>My Daraz</span></div></div>
+
+    <div class="app-shell">
+        <div id="app-header"></div>
+        <div id="side-menu-host"></div>
+
+        <div class="page-header">
+            <h1>প্রশ্নোত্তর (FAQ)</h1>
+            <p>সাধারণ জিজ্ঞাসা ও উত্তর</p>
+        </div>
+
+        <main class="app-main">
+            <div class="container" style="max-width:800px;">
+                <div id="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">কিভাবে অর্ডার করব?</div>
+                        <div class="faq-a">পছন্দের পণ্যে "Add to Cart" ক্লিক করুন → Cart পেজে যান → চেকআউট করুন → ঠিকানা ও পেমেন্ট মেথড নির্বাচন করুন → "Place Order" ক্লিক করুন। ব্যস!</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">ডেলিভারি কতদিনে পাব?</div>
+                        <div class="faq-a">ঢাকার ভিতরে সাধারণত ২-৪ কর্মদিবসে এবং ঢাকার বাইরে ৩-৭ কর্মদিবসে ডেলিভারি হয়। ৳৫০০+ অর্ডারে ফ্রি শিপিং।</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">পেমেন্ট মেথড কী কী?</div>
+                        <div class="faq-a">আমরা Cash on Delivery (COD), bKash, Nagad, Rocket, Visa/Mastercard এবং My Daraz Wallet সাপোর্ট করি।</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">রিটার্ন পলিসি কী?</div>
+                        <div class="faq-a">পণ্য পাওয়ার ৭ দিনের মধ্যে রিটার্ন করতে পারবেন যদি পণ্য ক্ষতিগ্রস্ত হয়, ভুল পণ্য পাঠানো হয়ে থাকে, অথবা বর্ণনার সাথে না মেলে। My Orders থেকে রিটার্ন রিকোয়েস্ট করুন।</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">কুপন কীভাবে ব্যবহার করব?</div>
+                        <div class="faq-a">Cart পেজে "Coupon Code" বক্সে কোডটি লিখে "Apply" ক্লিক করুন। বৈধ কুপন হলে ছাড় প্রয়োগ হবে। Coupons পেজে বর্তমান কুপনগুলো দেখুন।</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">Wallet এ টাকা কিভাবে যোগ করব?</div>
+                        <div class="faq-a">My Wallet পেজে যান → "Add Money" ক্লিক করুন → পরিমাণ লিখুন → bKash/Nagad/Card দিয়ে পেমেন্ট করুন। ক্যাশব্যাক ও রিফান্ড স্বয়ংক্রিয়ভাবে Wallet এ যোগ হবে।</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">Flash Sale কখন শুরু হয়?</div>
+                        <div class="faq-a">Flash Sale সাধারণত প্রতিদিন সকাল ১০টায় এবং রাত ৮টায় শুরু হয়, ৬ ঘন্টা পর্যন্ত চলে। সীমিত স্টক, তাই দ্রুত কিনুন!</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">অর্ডার ট্র্যাক কিভাবে করব?</div>
+                        <div class="faq-a">"My Orders" পেজে যান, অর্ডারের উপর ক্লিক করুন। স্ট্যাটাস — Pending, Confirmed, Shipped, Out for Delivery, Delivered — আপডেট হবে ধাপে ধাপে।</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">অ্যাকাউন্ট ডিলিট করতে চাই?</div>
+                        <div class="faq-a">Profile পেজে যান → "Delete Account" বাটনে ক্লিক করুন। নিশ্চিত করার পর আপনার অ্যাকাউন্ট স্থায়ীভাবে মুছে যাবে।</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">পাসওয়ার্ড ভুলে গেছি?</div>
+                        <div class="faq-a">Login পেজে "Forgot Password" ক্লিক করুন (ডেমো ভার্সনে এটি অগ্রাধিকার নয়)। Firebase ভার্সনে ইমেইলে রিসেট লিংক পাঠানো হবে।</div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">আরও সাহায্য দরকার?</h3>
+                        <p class="text-muted mb-3">নিচের যেকোনো উপায়ে আমাদের সাথে যোগাযোগ করুন</p>
+                        <div style="display:flex;gap:var(--sp-2);justify-content:center;flex-wrap:wrap;">
+                            <a class="btn" href="contact.html">📞 যোগাযোগ</a>
+                            <button class="btn btn-outline" onclick="toggleChat()">💬 লাইভ চ্যাট</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer id="app-footer"></footer>
+    </div>
+
+    <div id="chat-widget-host"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/db.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/store.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/wishlist.js"></script>
+    <script src="../js/live-chat.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        bootstrapPage();
+        setTimeout(hideSplash, 800);
+        function toggleFaq(el) {
+            el.parentElement.classList.toggle('open');
+        }
+    </script>
+</body>
+</html>

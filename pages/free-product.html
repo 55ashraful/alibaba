@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Freebie — My Daraz</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        #freeProductPage {
+            background: linear-gradient(160deg, #1a0533 0%, #2d1055 20%, #5b21b6 50%, #7c3aed 75%, #a855f7 100%);
+            min-height: 100vh; color: white; padding-bottom: 40px; position: relative;
+        }
+        #freeProductPage::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(192, 80, 192, 0.2) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        .free-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; position: relative; z-index: 2; }
+        .free-back-btn { width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 22px; cursor: pointer; border: 1px solid rgba(255,255,255,0.2); }
+        .free-header-title { font-size: 18px; font-weight: 600; letter-spacing: 0.5px; }
+        .free-main-card { background: rgba(255,255,255,0.08); backdrop-filter: blur(20px); margin: 0 16px; border-radius: 24px; padding: 24px 20px; border: 1px solid rgba(255,255,255,0.12); position: relative; z-index: 2; }
+        .free-product-wrapper { position: relative; text-align: center; margin-bottom: 20px; }
+        .free-product-wrapper img { width: 200px; max-height: 200px; object-fit: contain; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3)); animation: floatProduct 3s ease-in-out infinite; }
+        @keyframes floatProduct { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        .free-badge { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #ff00cc, #ff6b6b); color: white; padding: 6px 20px; border-radius: 20px; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; box-shadow: 0 4px 15px rgba(255,0,204,0.5); text-transform: uppercase; }
+        .free-claimed-text { text-align: center; font-size: 13px; color: rgba(255,255,255,0.7); margin-bottom: 6px; font-weight: 500; }
+        .free-claimed-text span { color: #ff6bff; font-weight: 700; }
+        .free-price-section { text-align: center; margin: 20px 0 16px; }
+        .free-old-price-display { font-size: 16px; color: rgba(255,255,255,0.45); text-decoration: line-through; margin-bottom: 4px; }
+        .free-remaining-amount { font-size: 38px; font-weight: 800; background: linear-gradient(to right, #ff00cc, #ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+        .free-cut-text { font-size: 13px; color: #ff6bff; margin-top: 2px; font-weight: 600; }
+        .free-progress-wrapper { margin: 20px 0; }
+        .free-progress-labels { display: flex; justify-content: space-between; font-size: 12px; color: rgba(255,255,255,0.6); margin-bottom: 8px; }
+        .free-progress-labels span:last-child { color: #ffd700; font-weight: 700; }
+        .free-progress-bar-bg { background: rgba(255,255,255,0.1); height: 14px; border-radius: 10px; overflow: hidden; position: relative; border: 1px solid rgba(255,255,255,0.1); }
+        .free-progress-bar-fill { background: linear-gradient(90deg, #ff00cc, #c850c0, #ff6b6b); height: 100%; border-radius: 10px; transition: width 1.5s ease-out; position: relative; overflow: hidden; box-shadow: 0 0 15px rgba(255,0,204,0.5); }
+        .free-action-btn { display: block; width: 100%; padding: 16px; border: none; border-radius: 16px; font-size: 18px; font-weight: 800; color: white; cursor: pointer; background: linear-gradient(135deg, #ff00cc 0%, #7d2ae8 100%); box-shadow: 0 8px 25px rgba(255,0,204,0.4); transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .free-action-btn:active { transform: scale(0.97); }
+        .free-hint-text { text-align: center; font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 12px; line-height: 1.5; }
+        .free-steps-card { background: rgba(255,255,255,0.06); backdrop-filter: blur(15px); margin: 24px 16px 0; border-radius: 20px; padding: 22px 20px; border: 1px solid rgba(255,255,255,0.08); position: relative; z-index: 2; }
+        .free-steps-title { text-align: center; font-size: 16px; font-weight: 700; margin-bottom: 20px; color: rgba(255,255,255,0.9); }
+        .free-steps-list { display: flex; flex-direction: column; gap: 16px; }
+        .free-step-item { display: flex; align-items: center; gap: 14px; }
+        .free-step-num { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; background: linear-gradient(135deg, #7d2ae8, #ff00cc); box-shadow: 0 4px 10px rgba(125,42,232,0.4); }
+        .free-step-text { font-size: 14px; color: rgba(255,255,255,0.8); font-weight: 500; }
+        .free-step-text strong { color: #ffd700; }
+    </style>
+</head>
+<body>
+    <div id="splash-screen"><div class="splash-logo"><span>My Daraz</span></div></div>
+
+    <div id="freeProductPage">
+        <div class="free-header">
+            <div class="free-back-btn" onclick="location.href='../index.html'">←</div>
+            <div class="free-header-title" id="free-title">MY FREEBIE</div>
+            <div style="width:40px;"></div>
+        </div>
+
+        <div class="free-main-card">
+            <div class="free-product-wrapper">
+                <div class="free-badge">MY FREEBIE</div>
+                <img id="free-image" src="https://via.placeholder.com/200?text=Loading..." alt="Product">
+            </div>
+
+            <div class="free-claimed-text" id="free-claimed-text">
+                <span>0</span> People claimed it for FREE
+            </div>
+
+            <div class="free-price-section">
+                <div class="free-old-price-display" id="free-old-price">৳ 0</div>
+                <div class="free-remaining-amount" id="free-remaining">৳ 0</div>
+                <div class="free-cut-text">আপনি কমিয়েছেন ৳ <span id="free-cut">0</span></div>
+            </div>
+
+            <div class="free-progress-wrapper">
+                <div class="free-progress-labels">
+                    <span>প্রগ্রেস</span>
+                    <span id="free-percent">0% সম্পন্ন</span>
+                </div>
+                <div class="free-progress-bar-bg">
+                    <div id="free-progress-fill" class="free-progress-bar-fill" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <button id="free-btn" class="free-action-btn" onclick="handleFreeBtn()">SHARE NOW</button>
+            <div class="free-hint-text">পুরো প্রাইজ ক্লেইম করতে উপরের বাটনে ক্লিক করুন</div>
+        </div>
+
+        <div class="free-steps-card">
+            <div class="free-steps-title">🔎কিভাবে জিতবেন🔍</div>
+            <div class="free-steps-list">
+                <div class="free-step-item">
+                    <div class="free-step-num">👥</div>
+                    <div class="free-step-text"><strong>Step 1:</strong> — বন্ধুদের সাথে লিংক শেয়ার করুন</div>
+                </div>
+                <div class="free-step-item">
+                    <div class="free-step-num">📢</div>
+                    <div class="free-step-text"><strong>Step 2:</strong> — দাম কমানোর জন্য বন্ধুদের লিংকে ক্লিক করতে বলুন</div>
+                </div>
+                <div class="free-step-item">
+                    <div class="free-step-num">🎁</div>
+                    <div class="free-step-text"><strong>Step 3:</strong> — কাটের পরিমাণ র্যান্ডম, পণ্য ও আমন্ত্রিত ব্যবহারকারীর উপর নির্ভর করে।</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="chat-widget-host"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/db.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/store.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/wishlist.js"></script>
+    <script src="../js/home.js"></script>
+    <script src="../js/live-chat.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        bootstrapPage().then(() => loadFreeProductSection());
+        setTimeout(hideSplash, 800);
+    </script>
+</body>
+</html>

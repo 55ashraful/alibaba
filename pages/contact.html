@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us — My Daraz</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div id="splash-screen"><div class="splash-logo"><span>My Daraz</span></div></div>
+
+    <div class="app-shell">
+        <div id="app-header"></div>
+        <div id="side-menu-host"></div>
+
+        <div class="page-header">
+            <h1>যোগাযোগ করুন</h1>
+            <p>আমরা আপনার প্রশ্নের উত্তর দিতে প্রস্তুত</p>
+        </div>
+
+        <main class="app-main">
+            <div class="container" style="max-width:900px;">
+                <div style="display:grid;gap:var(--sp-3);" class="contact-grid">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">📞 ফোন</h3>
+                            <p>+880 1700-000000</p>
+                            <p class="text-muted" style="font-size:var(--font-size-xs);">শনি-বৃহঃ, সকাল ৯টা — রাত ১০টা</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">✉ ইমেইল</h3>
+                            <p>support@mydaraz.bd</p>
+                            <p class="text-muted" style="font-size:var(--font-size-xs);">২৪ ঘন্টায় উত্তর</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">📍 ঠিকানা</h3>
+                            <p>House 12, Road 5, Gulshan-1</p>
+                            <p>Dhaka 1212, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">💬 সোশ্যাল</h3>
+                            <p>Facebook, YouTube, TikTok, WhatsApp</p>
+                            <p class="text-muted" style="font-size:var(--font-size-xs);">নিচে footer এ লিংক দেওয়া আছে</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h3 class="card-title">মেসেজ পাঠান</h3>
+                        <form onsubmit="event.preventDefault(); submitContactForm()">
+                            <div class="admin-form-row two">
+                                <div><label class="label">আপনার নাম</label><input class="input" id="contactName" required></div>
+                                <div><label class="label">ইমেইল</label><input class="input" type="email" id="contactEmail" required></div>
+                            </div>
+                            <div><label class="label">বিষয়</label><input class="input" id="contactSubject" required></div>
+                            <div><label class="label">মেসেজ</label><textarea class="textarea" id="contactMessage" rows="5" required></textarea></div>
+                            <button class="btn mt-3" type="submit">পাঠান</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h3 class="card-title">🗺️ আমাদের লোকেশন</h3>
+                        <div style="aspect-ratio:16/9; background:var(--bg-surface-alt); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; color:var(--text-muted);">
+                            <p>Google Maps embed here<br>(Gulshan-1, Dhaka)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer id="app-footer"></footer>
+    </div>
+
+    <div id="chat-widget-host"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/db.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/store.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/wishlist.js"></script>
+    <script src="../js/live-chat.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        bootstrapPage();
+        setTimeout(hideSplash, 800);
+        function submitContactForm() {
+            showToast('আপনার মেসেজ পাঠানো হয়েছে! আমরা শীঘ্রই যোগাযোগ করব।', 'success');
+            document.querySelectorAll('#contactName, #contactEmail, #contactSubject, #contactMessage').forEach(el => el.value = '');
+        }
+    </script>
+    <style>
+        @media (min-width: 768px) { .contact-grid { grid-template-columns: repeat(2, 1fr); } }
+    </style>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search — My Daraz</title>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/account.css">
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <div id="splash-screen"><div class="splash-logo"><span>My Daraz</span></div></div>
+
+    <div class="app-shell">
+        <div id="app-header"></div>
+        <div id="side-menu-host"></div>
+
+        <div class="page-header">
+            <h1>Search Results</h1>
+            <p><span id="search-count">0</span> products found</p>
+        </div>
+
+        <main class="app-main">
+            <div class="container">
+                <form onsubmit="submitSearchForm(event)" class="search-toolbar">
+                    <input type="text" id="searchPageInput" class="input" style="flex:1;min-width:200px;" placeholder="Search products...">
+                    <button class="btn" type="submit">Search</button>
+                    <select class="sort-select" onchange="applySort(this.value)">
+                        <option value="relevance">Relevance</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="rating">Rating</option>
+                        <option value="popular">Popularity</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                    <label class="filter-toggle">
+                        <input type="checkbox" onchange="toggleDiscountFilter(this)"> Only Discounted
+                    </label>
+                </form>
+                <div class="search-layout">
+                    <aside class="filter-sidebar">
+                        <div class="filter-group">
+                            <h5>Price Range</h5>
+                            <div class="flex gap-2 mb-2">
+                                <input type="number" id="minPrice" class="input" placeholder="Min" style="font-size:var(--font-size-xs);">
+                                <input type="number" id="maxPrice" class="input" placeholder="Max" style="font-size:var(--font-size-xs);">
+                            </div>
+                            <button class="btn btn-sm btn-block" onclick="applyPriceFilter()">Apply</button>
+                        </div>
+                        <div class="filter-group">
+                            <h5>Brand</h5>
+                            <div id="brand-filter"></div>
+                        </div>
+                        <div class="filter-group">
+                            <h5>Category</h5>
+                            <div id="category-filter"></div>
+                        </div>
+                    </aside>
+                    <div class="products-grid" id="search-results"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer id="app-footer"></footer>
+    </div>
+
+    <div id="chat-widget-host"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+
+    <script src="../js/config.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/db.js"></script>
+    <script src="../js/ui.js"></script>
+    <script src="../js/store.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/wishlist.js"></script>
+    <script src="../js/home.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/live-chat.js"></script>
+    <script src="../js/common.js"></script>
+    <script>
+        bootstrapPage().then(() => initSearchPage());
+    </script>
+</body>
+</html>
